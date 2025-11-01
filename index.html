@@ -66,6 +66,15 @@
   </style>
 </head>
 <body>
+<script src="https://unpkg.com/@rive-app/canvas@2.10.3"></script>
+<canvas id="riveCanvas" width="300" height="300"></canvas>
+<script>
+  const rive = new rive.Rive({
+    src: "animacion.riv", // reemplaza con tu archivo subido a la carpeta
+    canvas: document.getElementById("riveCanvas"),
+    autoplay: true,
+  });
+</script>
 
   <h1>🌍 ¡BIENVENID@S  LA IV FERIA DE INNOVACION Y SERVICIOS TECNOLOGICOS DEL IESP YUNGUYO 2025!</h1>
   <p>Bienvenido al sitio de demostración del <strong>IESP YUNGUYO</strong>.  
