@@ -66,7 +66,48 @@
     </style>
   </head>
   <body>
- 
+ <!-- coloca esto justo dentro del <body>, antes del <h1> -->
+<!-- Rive runtime -->
+<script src="https://unpkg.com/@rive-app/canvas@2.10.3"></script>
+
+<!-- canvas -->
+<canvas id="riveCanvas" width="320" height="320" style="display:block;margin:0 auto 18px;"></canvas>
+
+<script>
+  // Espera a que el runtime cargue
+  window.addEventListener('load', () => {
+    try {
+      const canvas = document.getElementById('riveCanvas');
+
+      // Opcional: escala responsive
+      function resizeCanvas() {
+        const max = Math.min(window.innerWidth - 40, 380);
+        canvas.width = max;
+        canvas.height = max;
+      }
+      resizeCanvas();
+      window.addEventListener('resize', resizeCanvas);
+
+      // Crea la animación
+      const riveInstance = new rive.Rive({
+        src: 'animacion.riv',        // asegúrate que este archivo exista en la misma carpeta que index.html
+        canvas: canvas,
+        autoplay: true,
+        // si tu .riv tiene state machines, puedes especificarlas:
+        // stateMachines: 'State Machine 1',
+        // use offscreenCanvas if quieres mejor rendimiento:
+        // useOffscreenCanvas: true
+      });
+
+      // opcional: escuchar errores / eventos
+      riveInstance.on('load', () => console.log('Rive: animación cargada correctamente'));
+      riveInstance.on('error', (e) => console.error('Rive error:', e));
+    } catch (err) {
+      console.error('Error inicializando Rive:', err);
+    }
+  });
+</script>
+
 
     <h1>🌍 ¡BIENVENID@S  LA IV FERIA DE INNOVACION Y SERVICIOS TECNOLOGICOS DEL IESP YUNGUYO 2025!</h1>
     <p>Bienvenido al sitio de demostración del <strong>IESP YUNGUYO</strong>.  
